@@ -73,6 +73,63 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        String name = "";
+        int hitPoints = 0;
+        int attackLevel = 0;
+        int defenseLevel = 0;
+        tempPokemon.hitPoints = hitPoints;
+        tempPokemon.attackLevel = attackLevel;
+        tempPokemon.defenseLevel = defenseLevel;
+        tempPokemon.name = name;
+
+        while (name == "") {
+            System.out.println("Please name your Pokemon: ");
+            name = myScan.nextLine();
+            if (name == null) {
+                name = "";
+            }
+        }
+
+        while (hitPoints == 0) {
+            System.out.println("How many hit points will it have? (1-" + MAX_HIT_POINTS + "): ");
+            hitPoints = myScan.nextInt();
+            if (hitPoints < 1 || hitPoints > MAX_HIT_POINTS) {
+                System.out.println("Sorry. Hit points must be between 1 and " + MAX_HIT_POINTS + ": " + hitPoints);
+                hitPoints = 0;
+
+            }
+        }
+
+        while (attackLevel == 0) {
+            System.out.println("Split " + MAX_HIT_POINTS + " points between attack level and defense level");
+            System.out.println("Enter your attack level (1-" + (MAX_HIT_POINTS - 1) + "): ");
+            attackLevel = myScan.nextInt();
+            if (attackLevel < 1 || attackLevel > (MAX_HIT_POINTS - 1)) {
+                System.out.println("Sorry. Attack level must be between 1 and "
+                        + (MAX_HIT_POINTS - 1) + ": " + attackLevel);
+                attackLevel = 0;
+
+            }
+        }
+
+        while (defenseLevel == 0) {
+            System.out.println("Split " + MAX_HIT_POINTS + " points between attack level and defense level");
+            System.out.println("Enter your defense level (1-" + (MAX_HIT_POINTS - attackLevel) + "): ");
+            defenseLevel = myScan.nextInt();
+            if (defenseLevel < 1 || defenseLevel > (MAX_HIT_POINTS - attackLevel)) {
+                System.out.println("Sorry. Defense level must be between 1 and "
+                        + (MAX_HIT_POINTS - attackLevel) + ": " + defenseLevel);
+                defenseLevel = 0;
+
+            }
+        }
+
+
+
+        tempPokemon.hitPoints = hitPoints;
+        tempPokemon.attackLevel = attackLevel;
+        tempPokemon.defenseLevel = defenseLevel;
+        tempPokemon.name = name;
         return tempPokemon;
     }
 
@@ -113,14 +170,14 @@ public class Colosseum {
         System.out.println("Player 1, build your Pokemon!");
         System.out.println("=================");
         firstPokemon = buildPokemon();
-        firstPokemon.name = "Chuchu";
+        //firstPokemon.name = "Chuchu";
 
         System.out.println("");
 
         System.out.println("Player 2, build your Pokemon!");
         System.out.println("==================");
         secondPokemon = buildPokemon();
-        secondPokemon.name = "Xyz";
+        //secondPokemon.name = "Xyz";
     }
 
     /**
